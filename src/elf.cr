@@ -103,7 +103,7 @@ module Elf
   my_elf = Elf_header.new
   my_ptable = P_header.new
   my_ptable2 = P_header.new
-  my_var = IO::Memory.new("Hello 64-bit worldddddAmir!\n").to_slice
+  my_var = IO::Memory.new("Hello 64-bit world!\n").to_slice
   program = UInt8.slice(0xba,my_var.size,0,0,0,0x48,0x8d,0x35,0x15,0x10,0,0,0xbf,0x01,0,0,0,0xb8,1,0,0,0,0x0f,5,0x31, 0xff, 0xb8, 0x3c, 0, 0, 0, 0x0f, 5)
   file_size = program.size + 0x40 + 0x38 + 0x38
   my_ptable.p_filesz = my_ptable.p_memsz = my_ptable2.p_offset=UInt8.slice(file_size, 0, 0, 0, 0, 0, 0, 0)
